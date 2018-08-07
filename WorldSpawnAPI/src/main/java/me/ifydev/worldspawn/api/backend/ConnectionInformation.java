@@ -17,4 +17,5 @@ public class ConnectionInformation {
     @Getter private String username;
     @Getter private String password;
     @Getter private Map<String, Object> meta;
+    @Getter private Backend.Types type;
 }

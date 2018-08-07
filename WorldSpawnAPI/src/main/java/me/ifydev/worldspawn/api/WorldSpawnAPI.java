@@ -20,12 +20,12 @@ public class WorldSpawnAPI {
     @Getter private Backend backend;
     @Getter private AbstractDisplayManager displayManager;
 
-    public WorldSpawnAPI(Backend.Types type, ConnectionInformation connectionInformation, AbstractDisplayManager displayManager) {
+    public WorldSpawnAPI(ConnectionInformation connectionInformation, AbstractDisplayManager displayManager) {
         this.displayManager = displayManager;
 
-        constructBackend(type, connectionInformation).ifFilled((backend) -> {
+        constructBackend(connectionInformation.getType(), connectionInformation).ifFilled((backend) -> {
             this.backend = backend;
-            System.out.printf("Using %s as the data backend.\n", type.name());
+            System.out.printf("Using %s as the data backend.\n", connectionInformation.getType().name());
 
             backend.reload();
         });
