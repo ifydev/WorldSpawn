@@ -1,4 +1,4 @@
-package me.ifydev.worldspawn.structures;
+package me.ifydev.worldspawn.api.structures;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

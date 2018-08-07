@@ -1,4 +1,4 @@
-package me.ifydev.worldspawn.database;
+package me.ifydev.worldspawn.api.backend;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
