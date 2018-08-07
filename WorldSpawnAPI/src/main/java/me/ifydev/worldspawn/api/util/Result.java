@@ -18,14 +18,6 @@ public class Result<Success, Error> {
     private Success success;
     private Error error;
 
-    public boolean ok() {
-        return error == null && success != null;
-    }
-
-    public boolean err() {
-        return error != null && success == null;
-    }
-
     public Optional<Success> getOk() {
         return Optional.ofNullable(success);
     }
@@ -35,13 +27,11 @@ public class Result<Success, Error> {
     }
 
     public void ifFilled(ResultRunnable<Success> runnable) {
-        if (!ok()) return;
-
-        runnable.run(success);
+        if (success != null) runnable.run(success);
     }
 
-    public static<Success, Error> Result<Success, Error> fromSuccess(Success sucess) {
-        return new Result<>(sucess, null);
+    public static<Success, Error> Result<Success, Error> fromSuccess(Success success) {
+        return new Result<>(success, null);
     }
 
     public static<Success, Error> Result<Success, Error> fromErr(Error error) {
