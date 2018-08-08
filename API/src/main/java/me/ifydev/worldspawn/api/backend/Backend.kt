@@ -13,7 +13,11 @@ abstract class Backend(val info: ConnectionInformation) {
 
     enum class Types(val backend: KClass<SQLBackend>) {
         MySQL(SQLBackend::class),
-        SQLite(SQLBackend::class)
+        SQLite(SQLBackend::class);
+
+        companion object {
+            fun findType(name: String): Types? = values().firstOrNull { v -> v.name.equals(name, true) }
+        }
     }
 
     protected var locations: MutableMap<String, Location> = HashMap()

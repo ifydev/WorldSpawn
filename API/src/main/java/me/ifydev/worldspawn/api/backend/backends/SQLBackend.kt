@@ -17,7 +17,7 @@ import java.sql.SQLException
 @Throws(SQLException::class)
 fun Connection.prepareStatementAndExecute(sql: String, fillers: Array<Any> = emptyArray()): ResultSet? {
     val statement = this.prepareStatement(sql)
-    fillers.forEachIndexed { index, value -> statement.setObject(index + 1, value)}
+    fillers.forEachIndexed { index, value -> statement.setObject(index + 1, value) }
 
     val results = statement.executeQuery()
 

@@ -1,0 +1,5 @@
+name: WorldSpawn
+version: 1.0.0
+main: me.ifydev.worldspawn.spigot.WorldSpawnMain
+description: Set world spawns
+author: IfyDev
