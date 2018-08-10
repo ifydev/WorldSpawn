@@ -81,6 +81,8 @@ class SQLBackend(info: ConnectionInformation) : Backend(info) {
     override fun addWorldSpawn(location: Location): Tristate {
         val connection = getConnection() ?: return Tristate.NONE
 
+        locations[location.world] = location
+
         try {
             connection.use { connection.prepareStatementAndExecute("INSERT INTO locations (world, x, y, z) VALUES (?, ?, ?, ?)", arrayOf(location.world, location.x, location.y, location.z)) }
         } catch (e: SQLException) {
@@ -92,6 +94,8 @@ class SQLBackend(info: ConnectionInformation) : Backend(info) {
     }
 
     override fun removeWorldSpawn(world: String): Tristate {
+        locations.remove(world)
+
         val connection = getConnection() ?: return Tristate.NONE
         try {
             connection.use { connection.prepareStatementAndExecute("DELETE FROM locations WHERE world=?", arrayOf(world)) }

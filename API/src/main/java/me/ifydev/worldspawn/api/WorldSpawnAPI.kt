@@ -21,7 +21,7 @@ class WorldSpawnAPI {
     }
 
     private var info: ConnectionInformation? = null
-    private var backend: Backend? = null
+    var backend: Backend? = null
     private lateinit var handler: ErrorHandler
 
     fun initialize(info: ConnectionInformation?, handler: ErrorHandler) {
